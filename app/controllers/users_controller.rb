@@ -53,6 +53,7 @@ class UsersController < ApplicationController
 
     logger.info "Support: POST name:#{@user.name} email:#{@user.email} successful for list 1"
     logger.info "Support: POST name:#{@user.name} email:#{@user.email} successful for list 2"
+    
     logger.info "Support: POST #{@user.name} #{@user.email} successful"
 
     logger.info "Support: #{@user.email} user has been created."
