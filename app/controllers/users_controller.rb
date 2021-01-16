@@ -48,7 +48,15 @@ class UsersController < ApplicationController
     conn.post('/subscribe',api_key:"cKoFCdddFM9YIdSdvzmH", name:@user.name, email:@user.email,
       list:"892T763OdMvL6nGW3bMJs7cKYA", "Content-Type" => "application/x-www-form-urlencoded")
 
+<<<<<<< HEAD
+    conn.post('/subscribe',api_key:"cKoFCdddFM9YIdSdvzmH", name:@user.name, email:@user.email,
+      list:"cjYRUzEyfNFjFMmD6dKIbQ", "Content-Type" => "application/x-www-form-urlencoded")
+
+    logger.info "Support: POST name:#{@user.name} email:#{@user.email} successful for list 1"
+    logger.info "Support: POST name:#{@user.name} email:#{@user.email} successful for list 2"
+=======
     logger.info "Support: POST #{@user.name} #{@user.email} successful"
+>>>>>>> 3aa9a141020541aabe61ee147bf31056d4bd4127
 
     logger.info "Support: #{@user.email} user has been created."
 
