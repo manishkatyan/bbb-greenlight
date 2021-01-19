@@ -139,5 +139,5 @@ gem 'i18n-language-mapping', '~> 0.1.1'
 # this gem is used to make http post request
 gem "faraday"
 
-# This gem is used for urlencoding 
+# This gem is used for urlencoding  
 gem 'uri'
