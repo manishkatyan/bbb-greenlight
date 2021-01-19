@@ -24,6 +24,8 @@ class UsersController < ApplicationController
   include Recorder
   include Rolify
   require 'faraday'
+  require 'uri'
+
 
 
   before_action :find_user, only: [:edit, :change_password, :delete_account, :update, :update_password]
@@ -51,11 +53,22 @@ class UsersController < ApplicationController
     conn.post('/subscribe',api_key:"cKoFCdddFM9YIdSdvzmH", name:@user.name, email:@user.email,
       list:"cjYRUzEyfNFjFMmD6dKIbQ", "Content-Type" => "application/x-www-form-urlencoded")
 
+    # Greenlight Customization HubSpot Forms POST
+    data = {
+      :firstname => @user.name,
+      :email => @user.email,
+      :phone => @user.mobile
+    }
+    url = "https://forms.hubspot.com/uploads/form/v2/8247873/ac75bcf8-58ce-40c2-a8ac-299093c8871a"
+    
+    response = Faraday.post(url) do |req|
+      req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+      req.body = URI.encode_www_form(data)
+    end
+
     logger.info "Support: POST name:#{@user.name} email:#{@user.email} successful for list 1"
     logger.info "Support: POST name:#{@user.name} email:#{@user.email} successful for list 2"
-    
-    logger.info "Support: POST #{@user.name} #{@user.email} successful"
-
+    logger.info "Support: POST #{response.inspect}"
     logger.info "Support: #{@user.email} user has been created."
 
     # Set user to pending and redirect if Approval Registration is set
