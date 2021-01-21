@@ -98,6 +98,7 @@ class UsersController < ApplicationController
     redirect_to root_path unless current_user
   end
 
+  
   # GET /u/:user_uid/change_password
   def change_password
     redirect_to edit_user_path unless current_user.greenlight_account?
