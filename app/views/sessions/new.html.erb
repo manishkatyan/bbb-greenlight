@@ -54,6 +54,7 @@
                 </script>
                 <!--Greenlight customization end  -->
             </div>
+            <!--added firstname and lastname -->
             <div class="form-group">
               <%= f.label :firstname, t("settings.account.firstname"), class: "form-label" %>
               <%= f.text_field :firstname, class: "form-control #{form_is_invalid?(@user, :firstname)}", placeholder: t("settings.account.firstname") %>
