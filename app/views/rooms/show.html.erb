@@ -37,7 +37,9 @@
         </div>
         <h4 class="text-left mb-6"><%= @room.sessions %> <%= t("room.sessions") %> | <%= @recordings.length %> <%= t("room.recordings") %></h4>
         <% unless exceeds_limit %>
+        <% if cant_create %>
           <label class="form-label"><%= t("room.invite_participants") %></label>
+          <% end %>
           <div class="row">
            <% if cant_create %>
             <div class="col-lg-7 col-md-12 mt-2">
