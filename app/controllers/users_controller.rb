@@ -67,10 +67,12 @@ class UsersController < ApplicationController
       req.body = URI.encode_www_form(data)
     end
     
-     logger.info "Support: POST email:#{@user.email} successful for list 1"
-     logger.info "Support: POST email:#{@user.email} successful for list 2"
-     logger.info "Support: POST email:#{@user.email} successful for hubspot"
-     logger.info "Support: firstname:#{@user.firstname} lastname:#{@user.lastname} name:#{@user.name} email:#{@user.email} user has been created."
+
+    logger.info "Support: POST email:#{@user.email} successful for list 1"
+    logger.info "Support: POST email:#{@user.email} successful for list 2"
+    logger.info "Support: POST email:#{@user.email} successful for hubspot"
+    logger.info "Support: firstname:#{@user.firstname} lastname:#{@user.lastname} name:#{@user.name} email:#{@user.email} user has been created."
+
 
     # Set user to pending and redirect if Approval Registration is set
     if approval_registration
