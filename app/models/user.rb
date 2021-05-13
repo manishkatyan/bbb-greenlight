@@ -38,9 +38,6 @@ class User < ApplicationRecord
 
   belongs_to :role, required: false
 
-  validates :name, length: { maximum: 256 }, presence: true,
-                   format: { without: %r{https?://}i }
-
 
   # added "firstname" "lastname"
   validates :firstname, length: { maximum: 256 }, presence: true
