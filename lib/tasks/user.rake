@@ -10,7 +10,7 @@ namespace :user do
     u = {
       firstname: args[:firstname],
       lastname: args[:laststname],
-      name: args[:firstname] + args[:laststname],
+      name: "#{args[:firstname]}  #{args[:laststname]}",
       email: args[:email],
       mobile: args[:mobile],
       password: args[:password],
@@ -23,7 +23,7 @@ namespace :user do
       # Set default variables
       u[:firstname] = "Administrator" if u[:firstname].blank?
       u[:lastname] = "lastname" if u[:lastname].blank?
-      u[:name] = u[:firstname] +  u[:firstname] if u[:name].blank?
+      u[:name] = "#{args[:firstname]}  #{args[:laststname]}" if u[:name].blank?
       u[:mobile] = "9999999999" if u[:mobile].blank?
       u[:password] = Rails.configuration.admin_password_default if u[:password].blank?
       u[:email] = "admin@example.com" if u[:email].blank?
