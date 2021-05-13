@@ -433,7 +433,6 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.0.0)
-    uri (0.10.1)
     validate_email (0.1.6)
       activemodel (>= 3.0)
       mail (>= 2.2.5)
@@ -518,6 +517,8 @@ DEPENDENCIES
   turbolinks (~> 5.2.1)
   tzinfo-data (~> 1.2021.1)
   uglifier (~> 4.2.0)
-  uri
   web-console (~> 3.7)
   webmock (~> 3.11)
+
+BUNDLED WITH
+   2.2.14

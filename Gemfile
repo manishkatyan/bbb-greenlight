@@ -80,6 +80,3 @@ end
 
 # this gem is used to make http post request
 gem "faraday"
-
-# This gem is used for urlencoding  
-gem 'uri'
