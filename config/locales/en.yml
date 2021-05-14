@@ -222,7 +222,8 @@ en:
         username: Username
         valid: Valid
       title: Manage Users
-  add_to_google_calendar: "Add to Google Calendar"
+  add_to_google_calendar: "Google"
+  add_to_microsift_calendar: "Microsoft"
   bigbluebutton: BigBlueButton Trial @ HigherEdLab
   bigbluebutton_exception: Oops, there was an error when starting the meeting!
   cancel: Cancel

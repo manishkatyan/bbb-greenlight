@@ -117,6 +117,7 @@ module Greenlight
 
     # Show/hide "Add to Google Calendar" button in the room page
     config.enable_google_calendar_button = parse_bool(ENV['ENABLE_GOOGLE_CALENDAR_BUTTON'])
+    config.enable_microsoft_calendar_button = parse_bool(ENV['ENABLE_MICROSOFT_CALENDAR_BUTTON'])
 
     # Enum containing the different possible registration methods
     config.registration_methods = { open: "0", invite: "1", approval: "2" }

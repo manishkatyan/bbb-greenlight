@@ -268,7 +268,6 @@ class RoomsController < ApplicationController
     begin
       current_list = @room.shared_users.pluck(:id)
       new_list = User.where(uid: params[:add]).pluck(:id)
-
       # Get the list of users that used to be in the list but were removed
       users_to_remove = current_list - new_list
       # Get the list of users that are in the new list but not in the current list
