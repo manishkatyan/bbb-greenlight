@@ -26,6 +26,10 @@ module AdminsHelper
     Room.find_by(bbb_id: room_id).owner.email.presence || Room.find_by(bbb_id: room_id).owner.username
   end
 
+  # get user mp4 access status
+  def recording_owner_have_mp4(room_id)
+    Room.find_by(bbb_id: room_id).owner.mp4
+  end
   # Get the room status to display in the Server Rooms table
   def room_is_running(id)
     @running_room_bbb_ids.include?(id)
@@ -139,6 +143,16 @@ module AdminsHelper
     end
   end
 
+
+  # streaming status
+  def is_streaming(room_id)
+    user_id = Room.where(id: room_id).first.user_id
+    uid = User.where(id: user_id).first.uid
+    json_file = "/usr/src/app/streaming_stats/#{uid}.json"
+    status_file = File.file?(json_file) ? JSON.load(File.read(json_file)) : false
+    status_file ?  status_file["running"] : false
+  end
+  
   # Roles
 
   def edit_disabled

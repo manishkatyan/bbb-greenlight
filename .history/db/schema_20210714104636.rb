@@ -157,6 +157,8 @@ ActiveRecord::Schema.define(version: 2021_07_01_034224) do
     t.string "mobile"
     t.string "firstname"
     t.string "lastname"
+    t.string "subscription_id"
+    t.string "subscription_status"
     t.boolean "streaming", default: true
     t.boolean "mp4", default: true
     t.boolean "twilio", default: true
