@@ -202,5 +202,13 @@ module Greenlight
     
     # Twilio
     config.twilio_number = ENV['TWILIO_NUMBER'].present? ? ENV['TWILIO_NUMBER'] : false
+
+    # sendy
+    config.sendy_api_key=ENV['SENDY_API_KEY']
+    config.sendy_list_1=ENV['SENDY_LIST_1']
+    config.sendy_list_1=ENV['SENDY_LIST_2']
+
+    # HubSpot
+    config.hub_spot_api = ENV['HUBSPOT_API']
   end
 end
