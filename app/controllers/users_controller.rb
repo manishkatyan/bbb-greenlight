@@ -45,30 +45,30 @@ class UsersController < ApplicationController
     # User has passed all validations required
     @user.save
 
-    #   #Greenlight Customization subscribe to sendy
-    # conn = Faraday.new('https://sendy.higheredlab.com')
+      #Greenlight Customization subscribe to sendy
+    conn = Faraday.new('https://sendy.higheredlab.com')
     
-    # conn.post('/subscribe',api_key:"cKoFCdddFM9YIdSdvzmH", name:@user.name, email:@user.email, FirstName:@user.firstname, LastName:@user.lastname,
-    #   list:"892T763OdMvL6nGW3bMJs7cKYA", "Content-Type" => "application/x-www-form-urlencoded")
+    conn.post('/subscribe',api_key:"cKoFCdddFM9YIdSdvzmH", name:@user.name, email:@user.email, FirstName:@user.firstname, LastName:@user.lastname,
+      list:"892T763OdMvL6nGW3bMJs7cKYA", "Content-Type" => "application/x-www-form-urlencoded")
 
-    # conn.post('/subscribe',api_key:"cKoFCdddFM9YIdSdvzmH", name:@user.name, email:@user.email, FirstName:@user.firstname, LastName:@user.lastname,
-    #   list:"cjYRUzEyfNFjFMmD6dKIbQ", "Content-Type" => "application/x-www-form-urlencoded")
+    conn.post('/subscribe',api_key:"cKoFCdddFM9YIdSdvzmH", name:@user.name, email:@user.email, FirstName:@user.firstname, LastName:@user.lastname,
+      list:"cjYRUzEyfNFjFMmD6dKIbQ", "Content-Type" => "application/x-www-form-urlencoded")
 
-    # logger.info "Support: POST name:#{@user.name} email:#{@user.email} successful for list 1"
-    # logger.info "Support: POST name:#{@user.name} email:#{@user.email} successful for list 2"
+    logger.info "Support: POST name:#{@user.name} email:#{@user.email} successful for list 1"
+    logger.info "Support: POST name:#{@user.name} email:#{@user.email} successful for list 2"
 
-    # # Greenlight Customization HubSpot Forms POST
-    # data = {
-    #   :email => @user.email,
-    #   :firstname => @user.firstname,
-    #   :lastname => @user.lastname,
-    #   :phone => @user.mobile
-    # }
-    # url = "https://forms.hubspot.com/uploads/form/v2/8247873/ac75bcf8-58ce-40c2-a8ac-299093c8871a"
-    # response = Faraday.post(url) do |req|
-    #   req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-    #   req.body = URI.encode_www_form(data)
-    # end
+    # Greenlight Customization HubSpot Forms POST
+    data = {
+      :email => @user.email,
+      :firstname => @user.firstname,
+      :lastname => @user.lastname,
+      :phone => @user.mobile
+    }
+    url = "https://forms.hubspot.com/uploads/form/v2/8247873/ac75bcf8-58ce-40c2-a8ac-299093c8871a"
+    response = Faraday.post(url) do |req|
+      req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+      req.body = URI.encode_www_form(data)
+    end
 
     logger.info "Support: firstname:#{@user.firstname} lastname:#{@user.lastname} name:#{@user.name} email:#{@user.email} user has been created."
 
