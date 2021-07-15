@@ -16,7 +16,8 @@
 <div class="header py-4">
   <div class="container">
     <div class="d-flex">
-      <%= link_to (current_user ? home_page : root_path), class: "header-brand" do %>
+      <!-- linked branding logo with main site -->
+      <%= link_to ((current_user && Rails.configuration.logo_url.blank?) ? home_page : Rails.configuration.logo_url.blank? ? root_path : Rails.configuration.logo_url ), class: "header-brand" do %>
         <% begin %>
           <%= image_tag(logo_image, class: "header-brand-img", alt:"") %>
         <% rescue %>
@@ -113,7 +114,9 @@
             <%= link_to t("login"), signin_path, :class => "btn btn-outline-primary mx-2 sign-in-button" %>
           <% end %>
 
-          
+          <% if allow_user_signup? && allow_greenlight_accounts %>
+            <%= link_to t("signup.title"), signup_path, :class => "btn btn-outline-primary mx-2 sign-in-button" %>
+          <% end %>
         <% end %>
       </div>
     </div>
