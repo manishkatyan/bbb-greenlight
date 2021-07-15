@@ -158,8 +158,8 @@ ActiveRecord::Schema.define(version: 2021_07_01_034224) do
     t.string "firstname"
     t.string "lastname"
     t.boolean "streaming", default: true
-    t.boolean "mp4", default: true
     t.boolean "twilio", default: true
+    t.boolean "mp4", default: true
     t.index ["created_at"], name: "index_users_on_created_at"
     t.index ["deleted"], name: "index_users_on_deleted"
     t.index ["email"], name: "index_users_on_email"

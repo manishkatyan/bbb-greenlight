@@ -16,6 +16,8 @@
 # You should have received a copy of the GNU Lesser General Public License along
 # with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 
+require 'open-uri'
+
 module AdminsHelper
   include Pagy::Frontend
 
@@ -30,6 +32,7 @@ module AdminsHelper
   def recording_owner_have_mp4(room_id)
     Room.find_by(bbb_id: room_id).owner.mp4
   end
+
   # Get the room status to display in the Server Rooms table
   def room_is_running(id)
     @running_room_bbb_ids.include?(id)
@@ -151,6 +154,17 @@ module AdminsHelper
     json_file = "/usr/src/app/streaming_stats/#{uid}.json"
     status_file = File.file?(json_file) ? JSON.load(File.read(json_file)) : false
     status_file ?  status_file["running"] : false
+  end
+
+  # return valid vtt filename for the given record id
+  def transcript_file_name(record_id)
+    logger.info "============#{url}"
+    begin
+      locale = JSON.parse(open(url).read)[0]["locale"]   
+      return "https://#{URI.parse(Rails.configuration.bigbluebutton_endpoint).host}/presentation/#{record_id}/caption_#{locale}.vtt"
+    rescue => exception
+      return false
+    end
   end
   
   # Roles
