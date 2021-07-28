@@ -46,7 +46,7 @@ module RecordingsHelper
   def transcript_file_name(record_id)
     url = "https://#{URI.parse(Rails.configuration.bigbluebutton_endpoint).host}/presentation/#{record_id}/captions.json"
     begin
-      locale = JSON.parse(open(url).read)[0]["locale"]
+      locale = JSON.parse(URI.open(url).read)[0]["locale"]
       return "https://#{URI.parse(Rails.configuration.bigbluebutton_endpoint).host}/presentation/#{record_id}/caption_#{locale}.vtt"
     rescue => exception
       return false
