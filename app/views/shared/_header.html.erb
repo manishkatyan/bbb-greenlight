@@ -38,15 +38,14 @@
               <i class="fas fa-video pr-1"></i><span class="d-none d-sm-inline-block"><%= t("header.all_recordings") %></span>
             <% end %>
           <% end %>
-          
-          <% if current_user.role.get_permission("can_manage_users") || current_user.role.name == "super_admin" %>
-          <a href="/analytics" class="px-3 mx-1 mt-1 header-nav">
+          <% if current_user.role.get_permission("can_manage_users")  || Rails.configuration.enable_monitoring.include?(current_user.role.name.upcase) %>
+          <a href="/monitoring" class="px-3 mx-1 mt-1 header-nav">
           <i class="fas fa-chart-bar"></i>
-          <span class="d-none d-sm-inline-block">Analytics</span>
+          <span class="d-none d-sm-inline-block">Monitoring</span>
           </a>
           <%end%>
           
-          <% if current_user.streaming?%>
+          <% if current_user.streaming? && current_user.role.get_permission("can_create_rooms")%>
           <a href="/streaming" class="px-3 mx-1 mt-1 header-nav">
           <i class="fas fa-bullhorn"></i>
           <span class="d-none d-sm-inline-block">Streaming</span>
@@ -62,7 +61,7 @@
                 <%= image_tag(current_user.image, id: "user-image", class: "avatar") %>
               <% end %>
               <span class="ml-2 d-none d-lg-block">
-                <span class="text-default username"><%= current_user.name %></span>
+                <span class="text-default username"><%= current_user.firstname %></span>
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" x-placement="bottom-end">

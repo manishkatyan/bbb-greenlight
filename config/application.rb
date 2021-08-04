@@ -206,9 +206,17 @@ module Greenlight
     # sendy
     config.sendy_api_key=ENV['SENDY_API_KEY']
     config.sendy_list_1=ENV['SENDY_LIST_1']
-    config.sendy_list_1=ENV['SENDY_LIST_2']
+    config.sendy_list_2=ENV['SENDY_LIST_2']
 
     # HubSpot
     config.hub_spot_api = ENV['HUBSPOT_API']
+    # Show Monitoring env
+    config.enable_monitoring= ['ADMIN', 'SUPER_ADMIN']
+    if ENV['ENABLE_MONITORING'].present?
+      ENV['ENABLE_MONITORING'].split(',').each do |u|
+        config.enable_monitoring << u.upcase 
+      end 
+    end
+
   end
 end
